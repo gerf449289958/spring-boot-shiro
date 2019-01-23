@@ -1,0 +1,39 @@
+spring:
+  # DataSource
+    datasource:
+      url: jdbc:mysql://localhost:3306/gerf_demo?serverTimezone=UTC&characterEncoding=utf-8
+      username: root
+      password: 123456
+      #schema: database/import.sql
+      #sql-script-encoding: utf-8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # Jpa
+    jpa:
+      database: mysql
+      show-sql: true
+      open-in-view: false
+      hibernate:
+        ddl-auto: none
+        naming:
+#          strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      properties:
+         hibernate:
+            dialect: org.hibernate.dialect.MySQL5Dialect
+
+  # freemarker
+    freemarker:
+      template-loader-path: classpath:/templates/
+      suffix: .ftl
+      cache: false
+      charset: utf-8
+      request-context-attribute: request
+      settings.template_exception_handler: com.neo.common.exception.FreemarkerExceptionHandler
+
+  # Static Resource
+    mvc:
+      static-path-pattern: /static/**
+
+    resources:
+      static-locations: classpath:/static/
